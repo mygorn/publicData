@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ท่าบริหาร — ปวดขา ชาปลายเท้า</title>
+<style>
+  :root{ --bg:#f6f4ef; --card:#fff; --ink:#26303a; --muted:#6b7480; --line:#dcd7cc; --body:#4a5663; --hurt:#d9552b; --ok:#2f8f5b; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',Tahoma,'Noto Sans Thai',sans-serif;font-size:16px;line-height:1.65;padding:16px 14px 70px;-webkit-text-size-adjust:100%}
+  .wrap{max-width:1100px;margin:0 auto}
+  h1{font-size:22px;line-height:1.3;margin:0 0 4px}
+  .sub{color:var(--muted);margin-bottom:12px;font-size:14px}
+  .nav a{font-size:13px;color:#2563a8;margin-right:12px}
+  .box{border-radius:10px;padding:12px 14px;margin:12px 0;font-size:15px}
+  .box.stop{background:#fdecea;border:1px solid #f1b5ae}
+  .box.rule{background:#eaf5ee;border:1px solid #b5d9c3}
+  .box b.t{display:block;margin-bottom:4px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+  .card h2{font-size:17px;margin:8px 0 4px}
+  .card svg{display:block;width:100%;height:auto;background:#fbfaf7;border-radius:8px;border:1px solid var(--line)}
+  .reps{display:inline-block;background:#eef3f8;color:#2563a8;border-radius:12px;padding:2px 10px;font-size:13px;font-weight:600;margin-bottom:4px}
+  .card p{margin:4px 0;font-size:15px}
+  .note{color:var(--muted);font-size:13.5px}
+  .lv{font-size:12px;font-weight:700;color:var(--ok);margin-top:8px}
+  h3{margin:26px 0 6px;font-size:18px}
+  ul{margin:4px 0;padding-left:22px}
+  li{margin:3px 0}
+  .b{stroke:var(--body);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+  .h{stroke:var(--hurt);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+  .head{fill:var(--body)}
+  .floor{stroke:#c9c2b4;stroke-width:2}
+  .prop{stroke:#a59c8a;stroke-width:4;stroke-linecap:round;fill:none}
+  .lbl{font-size:10px;fill:var(--muted);font-family:'Segoe UI',Tahoma,sans-serif}
+  #motion-btn{position:fixed;right:14px;bottom:14px;z-index:10;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:24px;padding:10px 16px;font-size:14px;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.15);cursor:pointer}
+  @media (min-width:700px){ h1{font-size:26px} body{padding:22px 18px 70px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  
+  <h1>🦵 ท่าบริหารสำหรับปวดขา + ชาปลายเท้า</h1>
+  <div class="sub">สำหรับอาการที่สงสัยว่าเส้นประสาทถูกกดจากการนั่งนาน · ภาพเคลื่อนไหวแสดงจังหวะของท่า · <span style="color:var(--hurt);font-weight:600">สีส้ม = ขาข้างที่เจ็บ</span></div>
+
+  <div class="box stop">
+    <b class="t">🚨 หยุดทำและไปพบแพทย์ ถ้าทำแล้ว…</b>
+    ปวดหรือชา <b>ลามลงไปไกลขึ้น</b> (เช่น จากน่องลงไปถึงเท้า) · ขาอ่อนแรงลง · ชาบริเวณก้น/เป้า · กลั้นปัสสาวะหรืออุจจาระไม่ได้ (ข้อหลังสุดไปห้องฉุกเฉินทันที)
+  </div>
+  <div class="box rule">
+    <b class="t">✅ กฎอ่านสัญญาณ: ดูว่าอาการ "เคลื่อนไปทางไหน"</b>
+    อาการที่ขา/เท้าลดลง แล้วมารู้สึกที่ก้นหรือหลังแทน = <b>สัญญาณดี ทำต่อได้</b> แม้หลังจะตึงขึ้นบ้าง<br>
+    อาการวิ่งลงขาไกลขึ้นหรือชามากขึ้น = <b>ท่านั้นยังไม่เหมาะ ให้หยุดท่านั้น</b><br>
+    ทำแค่ระดับ "ตึงๆ" ไม่ใช่ "เจ็บแปลบ" · เริ่มจากท่า 1 ก่อนเสมอ ค่อยเพิ่มท่าถัดไปเมื่อทำแล้วไม่แย่ลง
+  </div>
+
+  <div class="grid">
+
+    <!-- จังหวะ: A → B (ขึ้น) · ค้าง · B → A (ลง) — keySplines ให้เคลื่อนแบบนุ่ม ไม่กระตุก -->
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="นอนคว่ำแล้วยกลำตัวขึ้นตั้งศอก">
+        <line class="floor" x1="10" y1="114" x2="230" y2="114"/>
+        <path class="b" d="M150 106 L226 109"/>
+        <path class="h" d="M150 104 L226 104"/>
+        <path class="b" d="M150 105 L92 105">
+          <animate attributeName="d" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.2;0.85;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M150 105 L92 105;M150 105 L96 82;M150 105 L96 82;M150 105 L92 105"/>
+        </path>
+        <path class="b" d="M92 105 L84 109 L60 109">
+          <animate attributeName="d" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.2;0.85;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M92 105 L84 109 L60 109;M96 82 L96 109 L68 109;M96 82 L96 109 L68 109;M92 105 L84 109 L60 109"/>
+        </path>
+        <circle class="head" cx="76" cy="98" r="10">
+          <animate attributeName="cx" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.2;0.85;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="76;82;82;76"/>
+          <animate attributeName="cy" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.2;0.85;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="98;68;68;98"/>
+        </circle>
+        <text class="lbl" x="150" y="92">สะโพกและขาแนบพื้น</text>
+      </svg>
+      <div class="lv">ท่า 1 · เริ่มที่ท่านี้</div>
+      <h2>นอนคว่ำตั้งศอก</h2>
+      <span class="reps">ค้าง 1–2 นาที · วันละ 3–4 รอบ</span>
+      <p>นอนคว่ำ วางศอกใต้ไหล่ ยกลำตัวช่วงบนขึ้น ปล่อยสะโพกและขาแนบพื้น หายใจตามสบาย ปล่อยหลังส่วนล่างให้หย่อน</p>
+      <p class="note">ถ้าแค่นอนคว่ำราบก็ตึงแล้ว ให้นอนคว่ำเฉยๆ 2–3 นาทีก่อน ยังไม่ต้องตั้งศอก</p>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="นอนคว่ำแล้วใช้แขนดันลำตัวขึ้น สะโพกติดพื้น">
+        <line class="floor" x1="10" y1="114" x2="230" y2="114"/>
+        <path class="b" d="M150 106 L226 109"/>
+        <path class="h" d="M150 104 L226 104"/>
+        <path class="b" d="M150 105 L100 100">
+          <animate attributeName="d" dur="4.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M150 105 L100 100;M150 105 L102 60;M150 105 L102 60;M150 105 L100 100"/>
+        </path>
+        <path class="b" d="M100 100 L114 106 L100 109">
+          <animate attributeName="d" dur="4.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M100 100 L114 106 L100 109;M102 60 L101 85 L100 109;M102 60 L101 85 L100 109;M100 100 L114 106 L100 109"/>
+        </path>
+        <circle class="head" cx="88" cy="92" r="10">
+          <animate attributeName="cx" dur="4.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="88;92;92;88"/>
+          <animate attributeName="cy" dur="4.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="92;45;45;92"/>
+        </circle>
+        <text class="lbl" x="158" y="92">สะโพกติดพื้น</text>
+      </svg>
+      <div class="lv">ท่า 2 · ต่อจากท่า 1</div>
+      <h2>ดันตัวขึ้น แอ่นหลัง</h2>
+      <span class="reps">10 ครั้ง · ทุก 2–3 ชม.</span>
+      <p>นอนคว่ำ วางมือข้างไหล่ ใช้แขนดันลำตัวขึ้นช้าๆ <b>สะโพกยังติดพื้น</b> ไม่เกร็งก้น ค้างบนสุด 2 วินาทีแล้วลง ขึ้นเท่าที่ไม่เจ็บ</p>
+      <p class="note">ท่านี้มักช่วยมากในคนนั่งนาน แต่ถ้าทำแล้วอาการวิ่งลงขา ให้หยุดและกลับไปท่า 1</p>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="นั่งเก้าอี้ เหยียดเข่าขึ้นพร้อมเงยหน้า แล้วงอลงพร้อมก้มหน้า">
+        <line class="floor" x1="10" y1="118" x2="230" y2="118"/>
+        <path class="prop" d="M72 92 L140 92 M78 92 L78 118 M134 92 L134 118 M72 92 L72 40"/>
+        <path class="b" d="M96 86 L96 42"/>
+        <path class="b" d="M96 50 L112 72 L128 80"/>
+        <path class="b" d="M96 86 L140 86 L140 116"/>
+        <path class="h" d="M96 84 L146 84 L146 114 L158 116">
+          <animate attributeName="d" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.45;0.55;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M96 84 L146 84 L146 114 L158 116;M96 84 L146 84 L190 78 L192 66;M96 84 L146 84 L190 78 L192 66;M96 84 L146 84 L146 114 L158 116"/>
+        </path>
+        <circle class="head" cx="103" cy="31" r="10">
+          <animate attributeName="cx" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.45;0.55;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="103;93;93;103"/>
+          <animate attributeName="cy" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.45;0.55;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="31;27;27;31"/>
+        </circle>
+        <text class="lbl" x="150" y="40">เหยียด = เงยหน้า</text>
+        <text class="lbl" x="150" y="52">งอ = ก้มหน้า</text>
+      </svg>
+      <div class="lv">ท่า 3 · เบามาก</div>
+      <h2>นั่งเหยียดขา ขยับเส้นประสาท</h2>
+      <span class="reps">10–15 ครั้ง · วันละ 2–3 รอบ</span>
+      <p>นั่งเก้าอี้หลังตรง ค่อยๆ เหยียดเข่าข้างที่เจ็บขึ้นพร้อมกระดกปลายเท้า <b>พร้อมกับเงยหน้า</b> แล้วงอเข่าลงพร้อมก้มหน้า ทำต่อเนื่องเป็นจังหวะช้าๆ <b>ไม่ค้าง</b></p>
+      <p class="note">เป็นการ "ขยับ" เส้นประสาทให้ลื่น ไม่ใช่การยืด ถ้าตึงแปลบให้เหยียดน้อยลง</p>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="นอนหงาย ข้อเท้าพาดเข่าอีกข้าง ดันเข่าออกเบาๆ">
+        <line class="floor" x1="10" y1="110" x2="230" y2="110"/>
+        <circle class="head" cx="32" cy="97" r="10"/>
+        <path class="b" d="M46 101 L112 101"/>
+        <path class="b" d="M112 101 L150 60 L176 106"/>
+        <path class="h" d="M112 99 L124 52 L152 62">
+          <animate attributeName="d" dur="6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.25;0.8;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M112 99 L124 52 L152 62;M112 99 L136 44 L152 62;M112 99 L136 44 L152 62;M112 99 L124 52 L152 62"/>
+        </path>
+        <path class="b" d="M54 99 L94 68 L122 58">
+          <animate attributeName="d" dur="6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.25;0.8;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M54 99 L94 68 L122 58;M54 99 L100 62 L134 50;M54 99 L100 62 L134 50;M54 99 L94 68 L122 58"/>
+        </path>
+        <text class="lbl" x="158" y="50">ข้อเท้าพาดเข่า</text>
+        <text class="lbl" x="60" y="40">มือดันเข่าออกเบาๆ</text>
+      </svg>
+      <div class="lv">ท่า 4</div>
+      <h2>ยืดกล้ามเนื้อสะโพก (เลข 4)</h2>
+      <span class="reps">ค้าง 20–30 วินาที · 3 ครั้ง · วันละ 2 รอบ</span>
+      <p>นอนหงาย ชันเข่าข้างดี เอาข้อเท้าข้างที่เจ็บพาดบนเข่าข้างดี ใช้มือดันเข่าข้างที่เจ็บออกเบาๆ หรือดึงขาข้างดีเข้าหาอก จนรู้สึกตึงลึกๆ ที่ก้นข้างที่เจ็บ</p>
+      <p class="note">ต้องตึงที่ <b>ก้น</b> ไม่ใช่เสียวลงขา ถ้าเสียวลงขาให้ผ่อนแรง</p>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="นอนหงายชันเข่า ยกสะโพกขึ้นแล้วลง">
+        <line class="floor" x1="10" y1="110" x2="230" y2="110"/>
+        <circle class="head" cx="32" cy="98" r="10"/>
+        <path class="b" d="M52 105 L100 106"/>
+        <path class="b" d="M46 102 L112 102">
+          <animate attributeName="d" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.3;0.7;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M46 102 L112 102;M46 102 L112 70;M46 102 L112 70;M46 102 L112 102"/>
+        </path>
+        <path class="b" d="M112 103 L150 64 L160 107">
+          <animate attributeName="d" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.3;0.7;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M112 103 L150 64 L160 107;M112 71 L152 62 L160 107;M112 71 L152 62 L160 107;M112 103 L150 64 L160 107"/>
+        </path>
+        <path class="h" d="M112 101 L152 60 L166 107">
+          <animate attributeName="d" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.3;0.7;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M112 101 L152 60 L166 107;M112 69 L154 58 L166 107;M112 69 L154 58 L166 107;M112 101 L152 60 L166 107"/>
+        </path>
+        <text class="lbl" x="60" y="50">เกร็งก้น แล้วยกขึ้น</text>
+      </svg>
+      <div class="lv">ท่า 5 · เสริมความแข็งแรง</div>
+      <h2>ยกสะโพก</h2>
+      <span class="reps">ค้าง 5 วินาที · 10 ครั้ง · 2 เซต</span>
+      <p>นอนหงาย ชันเข่าสองข้าง เท้าวางห่างเท่าสะโพก เกร็งก้นแล้วยกสะโพกขึ้นจนลำตัวเป็นแนวเดียวกับต้นขา ไม่แอ่นหลังเกิน ลงช้าๆ</p>
+      <p class="note">ช่วยให้กล้ามเนื้อก้นกลับมาทำงาน หลังจากถูกนั่งทับทั้งวัน</p>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="ตั้งคลาน เหยียดแขนไปหน้าและขาฝั่งตรงข้ามไปหลัง">
+        <line class="floor" x1="10" y1="114" x2="230" y2="114"/>
+        <path class="b" d="M142 66 L88 66"/>
+        <circle class="head" cx="72" cy="58" r="10"/>
+        <path class="b" d="M90 66 L90 111"/>
+        <path class="b" d="M138 66 L138 111 L168 111"/>
+        <path class="b" d="M86 64 L84 111">
+          <animate attributeName="d" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.3;0.7;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M86 64 L84 111;M86 64 L44 56;M86 64 L44 56;M86 64 L84 111"/>
+        </path>
+        <path class="h" d="M142 64 L146 111 L176 111">
+          <animate attributeName="d" dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.3;0.7;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M142 64 L146 111 L176 111;M142 64 L174 63 L206 62;M142 64 L174 63 L206 62;M142 64 L146 111 L176 111"/>
+        </path>
+        <text class="lbl" x="92" y="52">หลังนิ่ง ไม่บิด</text>
+      </svg>
+      <div class="lv">ท่า 6 · เมื่ออาการดีขึ้นแล้ว</div>
+      <h2>ตั้งคลาน เหยียดแขน-ขาสลับ</h2>
+      <span class="reps">ค้าง 5 วินาที · ข้างละ 8 ครั้ง</span>
+      <p>ตั้งคลาน หลังตรง เกร็งหน้าท้องเล็กน้อย เหยียดแขนข้างหนึ่งไปหน้า พร้อมขาฝั่งตรงข้ามไปหลัง ให้สะโพกนิ่ง ไม่เอียง</p>
+      <p class="note">สร้างความมั่นคงให้หลัง ช่วยกันไม่ให้เป็นซ้ำ เริ่มเมื่อปวดลดลงแล้ว</p>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 240 130" role="img" aria-label="ยืน มือค้ำเอวด้านหลัง แอ่นตัวไปข้างหลังแล้วกลับ">
+        <line class="floor" x1="10" y1="122" x2="230" y2="122"/>
+        <path class="b" d="M118 120 L120 78 M118 120 L132 120"/>
+        <path class="h" d="M128 120 L124 78 M128 120 L142 120"/>
+        <path class="b" d="M122 78 L122 40">
+          <animate attributeName="d" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M122 78 L122 40;M122 78 L106 42;M122 78 L106 42;M122 78 L122 40"/>
+        </path>
+        <path class="b" d="M122 44 L106 62 L118 76">
+          <animate attributeName="d" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="M122 44 L106 62 L118 76;M107 46 L96 66 L116 76;M107 46 L96 66 L116 76;M122 44 L106 62 L118 76"/>
+        </path>
+        <circle class="head" cx="123" cy="26" r="10">
+          <animate attributeName="cx" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="123;99;99;123"/>
+          <animate attributeName="cy" dur="4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".4 0 .2 1;0 0 1 1;.4 0 .2 1" values="26;29;29;26"/>
+        </circle>
+        <text class="lbl" x="152" y="50">หันหน้าทางนี้ →</text>
+        <text class="lbl" x="20" y="84">มือค้ำเอวด้านหลัง</text>
+      </svg>
+      <div class="lv">ท่า 7 · ทำตอนพักจากการนั่ง</div>
+      <h2>ยืนแอ่นหลัง</h2>
+      <span class="reps">10 ครั้ง · ทุกครั้งที่ลุกจากที่นั่ง</span>
+      <p>ยืนแยกเท้าเท่าไหล่ มือค้ำเอวด้านหลัง แอ่นตัวไปด้านหลังช้าๆ เท่าที่ไม่เจ็บ ค้าง 2 วินาที แล้วกลับ</p>
+      <p class="note">ท่าเดียวกับท่า 2 แต่ทำได้ทุกที่ เป็นการ "แก้" ท่าก้มงอที่ค้างมาตลอดการนั่ง</p>
+    </div>
+
+  </div>
+
+  <h3>⛔ ช่วงนี้ควรเลี่ยง</h3>
+  <ul>
+    <li>ก้มแตะปลายเท้า หรือยืดหลังขาแรงๆ — ดึงเส้นประสาทที่กำลังอักเสบ</li>
+    <li>ซิทอัพ หรือท่าที่งอตัวมาข้างหน้าซ้ำๆ</li>
+    <li>ยกของหนัก โดยเฉพาะยกพร้อมบิดตัว</li>
+    <li>นั่งต่อเนื่องเกิน 1.5–2 ชม. โดยไม่ลุก</li>
+    <li>นอนพักนิ่งๆ ทั้งวัน — เดินเบาๆ ดีกว่านอนเฉย</li>
+  </ul>
+
+  <h3>📅 ตารางง่ายๆ</h3>
+  <ul>
+    <li><b>เช้า:</b> ท่า 1 → 2 → 3 → 4</li>
+    <li><b>ระหว่างวัน (ขับรถ/นั่งทำงาน):</b> ลุกพักทุก 1.5–2 ชม. ทำท่า 7 แล้วเดิน 2–3 นาที</li>
+    <li><b>เย็น:</b> ท่า 1 → 2 → 4 → 5 (เพิ่มท่า 6 เมื่อดีขึ้น)</li>
+  </ul>
+
+  <p class="note" style="margin-top:24px">ภาพเป็นภาพวาดประกอบเพื่อให้เห็นจังหวะของท่าโดยรวม ไม่ใช่การรักษาเฉพาะบุคคลและไม่ใช่คำแนะนำทางการแพทย์ อาการที่มีชาร่วมด้วยควรให้แพทย์หรือนักกายภาพบำบัดตรวจและปรับท่าให้เหมาะกับสาเหตุจริง ถ้าทำ 1–2 สัปดาห์แล้วอาการชาไม่ลดลง ควรไปพบแพทย์</p>
+</div>
+
+<button id="motion-btn" type="button">⏸ หยุดภาพ</button>
+<script>
+  // ปุ่มหยุด/เล่นภาพเคลื่อนไหว — เริ่มแบบหยุดไว้ถ้าเครื่องตั้ง "ลดการเคลื่อนไหว"
+  (() => {
+    const btn = document.getElementById('motion-btn');
+    const svgs = [...document.querySelectorAll('.card svg')];
+    let paused = false;
+    const apply = () => {
+      svgs.forEach(s => paused ? s.pauseAnimations() : s.unpauseAnimations());
+      btn.textContent = paused ? '▶ เล่นภาพ' : '⏸ หยุดภาพ';
+    };
+    btn.addEventListener('click', () => { paused = !paused; apply(); });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { paused = true; apply(); }
+  })();
+</script>
+</body>
+</html>
